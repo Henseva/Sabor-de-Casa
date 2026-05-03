@@ -3,53 +3,72 @@
     --terracota: #bc6c25;
     --creme: #fdf6e3;
     --marrom-cafe: #4b3621;
-    --branco: #ffffff;
 }
 
 body {
-    background-color: #f5f0e6; /* Um tom ligeiramente mais quente que o creme puro */
-    font-family: 'Georgia', serif; /* Uma fonte com serifa dá o ar de "comida caseira" */
-    color: var(--marrom-cafe);
+    background-color: var(--creme);
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    padding: 15px;
+    padding: 0;
+    color: var(--marrom-cafe);
 }
 
-/* Container do Card */
-.card {
-    background-color: var(--branco);
-    padding: 16px;
-    border-radius: 20px; /* Bordas bem arredondadas como no design */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
-    border: 1px solid rgba(93, 109, 74, 0.1); /* Borda muito sutil */
-    transition: transform 0.2s;
+/* Centralização do Título e Ajustes de Margem */
+header {
+    text-align: center;
+    padding-top: 40px;
 }
 
-/* Ajuste das Categorias para parecer botões icônicos */
+h1 {
+    font-size: 2.5rem;
+    color: var(--marrom-cafe);
+    margin: 10px 0;
+}
+
+/* O cartão "Feito com amor" */
+.card-destaque {
+    background-color: #f7eedd;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid #e3d5c6;
+}
+
+/* Grade de Categorias - Alinhamento idêntico */
 .grid-categorias {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px;
     margin-top: 20px;
 }
 
-.card-categoria {
-    background: var(--branco);
-    padding: 15px 5px;
-    border-radius: 15px;
+.categoria-item {
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    width: 20%;
     text-align: center;
-    font-size: 0.8rem;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
-/* Botão de Ação (Terracota) */
-.btn-principal {
-    background-color: var(--terracota);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
+/* Seção da Marmita */
+.card-marmita {
+    background: white;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Barra de Navegação Inferior */
+.navbar {
+    position: fixed;
+    bottom: 0;
     width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    border-top: 1px solid #f0f0f0;
 }
