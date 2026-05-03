@@ -3,34 +3,53 @@
     --terracota: #bc6c25;
     --creme: #fdf6e3;
     --marrom-cafe: #4b3621;
+    --branco: #ffffff;
 }
 
 body {
-    background-color: var(--creme);
-    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f0e6; /* Um tom ligeiramente mais quente que o creme puro */
+    font-family: 'Georgia', serif; /* Uma fonte com serifa dá o ar de "comida caseira" */
     color: var(--marrom-cafe);
     margin: 0;
-    padding: 20px;
+    padding: 15px;
 }
 
-header { text-align: center; margin-bottom: 30px; }
-
-.logo { 
-    font-size: 2rem; 
-    font-weight: bold; 
-    color: var(--verde-oliva);
+/* Container do Card */
+.card {
+    background-color: var(--branco);
+    padding: 16px;
+    border-radius: 20px; /* Bordas bem arredondadas como no design */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
+    border: 1px solid rgba(93, 109, 74, 0.1); /* Borda muito sutil */
+    transition: transform 0.2s;
 }
 
+/* Ajuste das Categorias para parecer botões icônicos */
 .grid-categorias {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.card {
-    background-color: #fff;
-    padding: 20px;
+.card-categoria {
+    background: var(--branco);
+    padding: 15px 5px;
     border-radius: 15px;
     text-align: center;
-    border: 1px solid var(--verde-oliva);
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+/* Botão de Ação (Terracota) */
+.btn-principal {
+    background-color: var(--terracota);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
 }
