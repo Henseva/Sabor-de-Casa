@@ -3,25 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabor de Casa</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sabor de Casa - Pixel Perfect Design</title>
+    <style>
+        /* --- RESET E DEFINIÇÕES GERAIS --- */
+        :root {
+            --verde-oliva: #5d6d4a;
+            --terracota: #bc6c25;
+            --creme-fundo: #fdf6e3; /* Cor base do papel */
+            --marrom-cafe: #4b3621;
+            --branco: #ffffff;
+            --preto-suave: #2a2a2a;
+            --sombra-card: 0 4px 15px rgba(93, 109, 74, 0.15); /* Sombra suave no tom verde */
+        }
+
+        body {
+            background-color: #edeae2; /* Fundo mais escuro para contrastar o "celular" */
+            font-family: 'Georgia', serif; /* Fonte com serifa para o toque caseiro */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- CONTAINER DO "CELULAR" --- */
+        .app-phone-container {
+            width: 100%;
+            max-width: 414px; /* Simula largura de um iPhone Plus/Max */
+            height: 100vh; /* Ocupa altura total no mobile */
+            background-color: var(--creme-fundo);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1); /* Sombra externa do "dispositivo" */
+            position: relative;
+            overflow: hidden; /* Garante que nada saia do "celular" */
+        }
+
+        @media (min-width: 600px) {
+            .app-phone-container {
+                height: 896px; /* Altura fixa no desktop */
+                border-radius: 40px; /* Bordas do celular */
+                border: 12px solid #222; /* Borda preta simulando o hardware */
+            }
+        }
+
+        /* --- CONTEÚDO SCROLLÁVEL --- */
+        .app-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 20px 80px 20px; /* Padding inferior para a navbar */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* --- HEADER E IDENTIDADE --- */
+        header { text-align: center; margin-bottom: 30px; }
+        .app-logo { 
+            font-size: 2.2rem; 
+            font-weight: bold; 
+            color: var(--verde-oliva);
+            margin: 10px 0 5px 0;
+        }
+        .app-welcome { 
+            font-size: 1.1rem; 
+            color: var(--marrom-cafe); 
+            font-family: 'Segoe UI', sans-serif;
+            margin-top: 0;
+        }
+
+        /* --- SEÇÃO FEITO COM AMOR (TEXTURA PAPEL) --- */
+        .feito-com-amor {
+            background-color: #f7f1e1; /* Leve variação do creme */
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            border: 1px solid rgba(188, 108, 37, 0.1); /* Borda terracota sutil */
+        }
+        .feito-com-amor h2 {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 300;
+            font-size: 1.3rem;
+            color: var(--terracota);
+            margin: 0;
+        }
+        .feito-com-amor p {
+            font-size: 0.9rem;
+            color: var(--preto-suave);
+            margin: 8px 0 0 0;
+        }
+
+        /* --- CATEGORIAS --- */
+        .categorias h3 {
+            color: var(--marrom-cafe);
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+        .grid-categorias {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .card-categoria {
+            background: var(--branco);
+            padding: 15px 5px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: var(--sombra-card);
+            border: 1px solid rgba(93, 109, 74, 0.1);
+        }
+        .icon-placeholder {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .card-categoria span {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--marrom-cafe);
+        }
+
+        /* --- MARMITA DO DIA --- */
+        .marmita-dia h3 {
+            color: var(--marrom-cafe);
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin: 30px 0 15px 0;
+        }
+        .card-marmita {
+            background: var(--branco);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: var(--sombra-card);
+            border: 1px solid rgba(93, 109, 74, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .marmita-text h4 {
+            font-size: 1rem;
+            color: var(--marrom-cafe);
+            margin: 0 0 5px 0;
+        }
+        .marmita-text p {
+            font-size: 0.85rem;
+            color: var(--preto-suave);
+            margin: 0;
+        }
+        .marmita-preco {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+            color: var(--preto-suave);
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* --- BOTTOM NAVIGATION BAR --- */
+        .app-navbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--branco);
+            border-top: 1px solid #eee;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.03);
+            border-radius: 20px 20px 0 0;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #999; /* Cor inativa */
+            font-size: 0.7rem;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+        }
+        .nav-item.active {
+            color: var(--verde-oliva); /* Cor ativa */
+        }
+        .nav-icon {
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Sabor de Casa</div>
-        <p>Bom dia, Chef! 👋</p>
-    </header>
+    <div class="app-phone-container">
+        <div class="app-content">
+            <header>
+                <span>Sabor de Casa</span>
+                <h1>Sabor de Casa</h1>
+                <p>Bom dia, Chef! 👋</p>
+                <p>Que bom ter você aqui!</p>
+            </header>
 
-    <main>
-        <section class="destaques">
-            <h2>Categorias</h2>
-            <div class="grid-categorias">
-                <div class="card">Pratos</div>
-                <div class="card">Marmitas</div>
-                <div class="card">Lanches</div>
-                <div class="card">Bebidas</div>
-            </div>
-        </section>
-    </main>
+            <section class="feito-com-amor">
+                <h2>Feito com amor pra você!</h2>
+                <p>Comida de verdade ❤️ feita com amor, como em casa.</p>
+            </section>
+
+            <section class="categorias">
+                <h3>Categorias</h3>
+                <div class="grid-categorias">
+                    <div class="card-categoria"><span class="icon-placeholder">🥘</span><span>Pratos</span></div>
+                    <div class="card-categoria"><span class="icon-placeholder">🍱</span><span>Marmitas</span></div>
+                    <div class="card-categoria"><span class="icon-placeholder">🍔</span><span>Lanches</span></div>
+                    <div class="card-categoria"><span class="icon-placeholder">🥤</span><span>Bebidas</span></div>
+                </div>
+            </section>
+
+            <section class="marmita-dia">
+                <h3>Marmita do dia</h3>
+                <div class="card-marmita">
+                    <div class="marmita-text">
+                        <h4>Marmita do dia</h4>
+                        <p>Arroz, feijão, frango grelhado, legumes e salada.</p>
+                        <p class="marmita-preco">R$ 24,90</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <nav class="app-navbar">
+            <div class="nav-item active"><span class="nav-icon">🏠</span><span>Início</span></div>
+            <div class="nav-item"><span class="nav-icon">🔍</span><span>Buscar</span></div>
+            <div class="nav-item"><span class="nav-icon">🛍️</span><span>Pedidos</span></div>
+            <div class="nav-item"><span class="nav-icon">❤️</span><span>Favoritos</span></div>
+            <div class="nav-item"><span class="nav-icon">👤</span><span>Conta</span></div>
+        </nav>
+    </div>
 </body>
 </html>
