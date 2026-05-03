@@ -1,0 +1,36 @@
+:root {
+    --verde-oliva: #5d6d4a;
+    --terracota: #bc6c25;
+    --creme: #fdf6e3;
+    --marrom-cafe: #4b3621;
+}
+
+body {
+    background-color: var(--creme);
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--marrom-cafe);
+    margin: 0;
+    padding: 20px;
+}
+
+header { text-align: center; margin-bottom: 30px; }
+
+.logo { 
+    font-size: 2rem; 
+    font-weight: bold; 
+    color: var(--verde-oliva);
+}
+
+.grid-categorias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid var(--verde-oliva);
+}
