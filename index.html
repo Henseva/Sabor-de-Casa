@@ -3,81 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sabor de Casa</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg: #F5EFE0;
   --card: #FFF8ED;
+  --section: #EFE6D8;
   --green: #6B7A40;
-  --olive: #4E5B2A;
   --orange: #C96A2B;
   --text: #3A2E1F;
   --muted: #8A7D6B;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--bg);
   font-family: 'Inter', sans-serif;
+  background: var(--bg);
   color: var(--text);
 }
 
 .app {
   max-width: 420px;
   margin: auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  padding: 20px;
+  padding-bottom: 90px;
 }
 
 /* HEADER */
 
-.header {
-  padding: 20px;
-}
-
-.logo {
+.title {
   font-family: 'Playfair Display', serif;
-  font-size: 26px;
+  font-size: 28px;
   color: var(--orange);
 }
 
 .subtitle {
-  margin-top: 5px;
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 4px;
 }
 
 /* BANNER */
 
 .banner {
-  background: var(--green);
-  color: white;
-  margin: 15px;
+  margin: 20px 0;
   padding: 18px;
-  border-radius: 16px;
+  border-radius: 20px;
+  color: white;
+  background: linear-gradient(135deg, #6B7A40, #55652F);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-/* CARDS */
+/* SECTION */
 
-.card {
-  background: var(--card);
-  margin: 10px 15px;
+.section {
+  background: var(--section);
+  border-radius: 20px;
   padding: 15px;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.card img {
-  width: 100%;
-  border-radius: 12px;
+.section h3 {
+  margin-bottom: 10px;
 }
 
 /* GRID */
@@ -85,19 +75,61 @@ body {
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
 }
 
-/* BOTÃO */
+/* CARD */
+
+.food-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: .2s;
+}
+
+.food-card:active {
+  transform: scale(0.97);
+}
+
+.food-card img {
+  width: 100%;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.food-card p {
+  font-size: 14px;
+}
+
+.food-card strong {
+  display: block;
+  margin-top: 4px;
+}
+
+/* DETAILS */
+
+.details img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.price {
+  font-size: 22px;
+  margin-top: 10px;
+  color: var(--orange);
+}
 
 .btn {
+  margin-top: 15px;
   background: var(--orange);
   color: white;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 14px;
+  border-radius: 14px;
   text-align: center;
-  margin-top: 10px;
-  cursor: pointer;
+  font-weight: 600;
 }
 
 /* NAVBAR */
@@ -110,55 +142,22 @@ body {
   background: var(--card);
   display: flex;
   justify-content: space-around;
-  padding: 10px;
+  padding: 12px 0;
   border-top: 1px solid #ddd;
 }
 
 .nav-item {
   font-size: 12px;
-  text-align: center;
-  cursor: pointer;
+  color: var(--muted);
 }
 
-/* TELAS */
-
-.screen {
-  display: none;
+.nav-item.active {
+  color: var(--orange);
+  font-weight: 600;
 }
 
-.active {
-  display: block;
-}
-
-/* DETALHES */
-
-.price {
-  font-size: 22px;
-  margin-top: 10px;
-  color: var(--olive);
-}
-
-/* FAVORITOS */
-
-.list-item {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.list-item img {
-  width: 70px;
-  border-radius: 10px;
-}
-
-/* PEDIDOS */
-
-.status {
-  background: #e7f0d8;
-  padding: 10px;
-  border-radius: 12px;
-  margin-top: 10px;
-}
+.screen { display: none; }
+.active { display: block; }
 
 </style>
 </head>
@@ -170,26 +169,25 @@ body {
 <!-- HOME -->
 <div id="home" class="screen active">
 
-  <div class="header">
-    <div class="logo">Sabor de Casa</div>
-    <div class="subtitle">Que bom ter você aqui!</div>
-  </div>
+  <div class="title">Sabor de Casa</div>
+  <div class="subtitle">Que bom ter você aqui!</div>
 
   <div class="banner">
     Comida caseira de verdade, feita com amor ❤️
   </div>
 
-  <div class="card">
+  <div class="section">
     <h3>Destaques</h3>
+
     <div class="grid">
 
-      <div onclick="openDetails()" class="card">
+      <div class="food-card" onclick="openDetails()">
         <img src="https://images.unsplash.com/photo-1604908176997-4317db1d28b5">
         <p>Estrogonofe</p>
         <strong>R$ 26,90</strong>
       </div>
 
-      <div onclick="openDetails()" class="card">
+      <div class="food-card" onclick="openDetails()">
         <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
         <p>Lasanha</p>
         <strong>R$ 28,90</strong>
@@ -200,13 +198,15 @@ body {
 
 </div>
 
-<!-- DETALHES -->
+<!-- DETAILS -->
 <div id="details" class="screen">
 
-  <div class="card">
+  <div class="details">
     <img src="https://images.unsplash.com/photo-1604908176997-4317db1d28b5">
-    <h2>Frango com Legumes</h2>
-    <p>Arroz, feijão, frango grelhado e salada</p>
+
+    <h2 style="margin-top:10px">Frango com Legumes</h2>
+    <p>Arroz, feijão, salada fresca</p>
+
     <div class="price">R$ 24,90</div>
 
     <div class="btn">Adicionar ao carrinho</div>
@@ -214,64 +214,45 @@ body {
 
 </div>
 
-<!-- PEDIDOS -->
+<!-- ORDERS -->
 <div id="orders" class="screen">
-
-  <div class="card">
+  <div class="section">
     <h3>Pedido em preparo</h3>
-    <div class="status">
-      Seu pedido está sendo preparado ❤️
-      <br><br>
-      Previsão: 20 - 30 min
-    </div>
+    <p>Seu pedido está sendo preparado ❤️</p>
+    <p style="margin-top:10px">20 - 30 min</p>
   </div>
-
 </div>
 
-<!-- FAVORITOS -->
+<!-- FAVORITES -->
 <div id="favorites" class="screen">
-
-  <div class="card">
+  <div class="section">
     <h3>Favoritos</h3>
-
-    <div class="list-item">
-      <img src="https://images.unsplash.com/photo-1604908176997-4317db1d28b5">
-      <div>
-        Frango<br>
-        <strong>R$ 24,90</strong>
-      </div>
-    </div>
-
-    <div class="list-item">
-      <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
-      <div>
-        Lasanha<br>
-        <strong>R$ 28,90</strong>
-      </div>
-    </div>
-
+    <p>Frango - R$ 24,90</p>
+    <p>Lasanha - R$ 28,90</p>
   </div>
+</div>
 
 </div>
 
 <!-- NAVBAR -->
 <div class="navbar">
-  <div class="nav-item" onclick="navigate('home')">Início</div>
-  <div class="nav-item" onclick="navigate('orders')">Pedidos</div>
-  <div class="nav-item" onclick="navigate('favorites')">Favoritos</div>
-</div>
-
+  <div class="nav-item active" onclick="go('home', this)">Início</div>
+  <div class="nav-item" onclick="go('orders', this)">Pedidos</div>
+  <div class="nav-item" onclick="go('favorites', this)">Favoritos</div>
 </div>
 
 <script>
 
-function navigate(screen) {
+function go(screen, el) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(screen).classList.add('active');
+
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
 }
 
 function openDetails() {
-  navigate('details');
+  go('details', document.querySelectorAll('.nav-item')[0]);
 }
 
 </script>
