@@ -3,34 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabor de Casa</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Sabor de Casa UI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
 
-:root {
-  --bg: #F5EFE0;
-  --green: #5A6B3C;
-  --green-dark: #3E4A2B;
-  --orange: #C35A1E;
-  --brown: #6B4A2F;
-  --text: #2E2E2E;
-}
+/* RESET */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
 }
 
+/* TOKENS (DESIGN SYSTEM) */
+
+:root {
+  --bg-main: #0F140D;
+  --bg-card: #F5EFE0;
+  --bg-soft: #EFE7D6;
+
+  --green: #5A6B3C;
+  --green-dark: #3E4A2B;
+  --orange: #C35A1E;
+
+  --text-primary: #2E2E2E;
+  --text-secondary: #6E6E6E;
+
+  --radius-xl: 28px;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+
+  --shadow-main: 0 25px 60px rgba(0,0,0,0.5);
+  --shadow-soft: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* BODY */
+
 body {
-  background: radial-gradient(circle at top, #2f3e24, #0f140d);
+  background: radial-gradient(circle at top, #24301d, var(--bg-main));
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   padding: 40px;
 }
+
+/* GRID */
 
 .container {
   display: grid;
@@ -38,16 +58,16 @@ body {
   gap: 30px;
 }
 
+/* PHONE */
+
 .phone {
-  background: var(--bg);
-  border-radius: 30px;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
   padding: 20px;
-  box-shadow: 
-    0 20px 40px rgba(0,0,0,0.5),
-    inset 0 1px 0 rgba(255,255,255,0.4);
-  height: 640px;
-  overflow: hidden;
+  height: 680px;
   position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-main);
 }
 
 /* HEADER */
@@ -69,30 +89,31 @@ body {
 .title {
   font-size: 22px;
   font-weight: 600;
-  margin-top: 15px;
+  margin-top: 14px;
 }
 
 .subtitle {
   font-size: 13px;
-  color: #777;
+  color: var(--text-secondary);
+  margin-top: 4px;
 }
 
-/* FOOD IMAGE */
+/* PLACEHOLDER IMAGE */
 
-.food {
-  width: 100%;
-  border-radius: 20px;
+.image {
+  height: 150px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #ddd, #bbb);
   margin: 15px 0;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* CARD */
 
 .card {
   background: white;
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: var(--shadow-soft);
   margin-top: 10px;
 }
 
@@ -101,18 +122,55 @@ body {
   color: white;
 }
 
+/* GRID MINI */
+
+.grid {
+  display: flex;
+  gap: 10px;
+}
+
+.mini {
+  flex: 1;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 10px;
+  box-shadow: var(--shadow-soft);
+}
+
+.mini .image {
+  height: 70px;
+}
+
 /* BUTTON */
 
 .btn {
+  width: 100%;
   background: var(--orange);
   color: white;
   border: none;
   padding: 12px;
-  border-radius: 12px;
-  width: 100%;
+  border-radius: var(--radius-md);
   margin-top: 10px;
   font-weight: 600;
-  cursor: pointer;
+}
+
+/* BADGE */
+
+.badge {
+  background: var(--bg-soft);
+  padding: 6px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+/* PRICE */
+
+.price {
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 6px;
 }
 
 /* NAV */
@@ -122,56 +180,38 @@ body {
   bottom: 15px;
   left: 20px;
   right: 20px;
+  background: white;
+  border-radius: 16px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
-  background: white;
-  padding: 10px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-soft);
 }
 
-.nav span {
-  font-size: 12px;
-}
+/* LIST */
 
-/* GRID CARDS */
-
-.grid {
+.list {
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
-.mini-card {
-  flex: 1;
+.item {
   background: white;
-  border-radius: 15px;
+  border-radius: var(--radius-md);
   padding: 10px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* FOOTER INFO */
+
+.info {
+  margin-top: 12px;
   font-size: 12px;
-}
-
-/* BADGE */
-
-.badge {
-  background: #EAE3D5;
-  padding: 6px 10px;
-  border-radius: 10px;
-  font-size: 11px;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-/* DETAILS */
-
-.price {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.footer-info {
-  margin-top: 15px;
-  font-size: 12px;
-  color: #555;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 </style>
@@ -184,30 +224,25 @@ body {
 <!-- HOME -->
 <div class="phone">
   <div class="header">
-    <div>☰</div>
+    ☰
     <div class="logo">Sabor de Casa</div>
-    <div>🔔</div>
+    🔔
   </div>
 
   <div class="title">Que bom ter você aqui!</div>
   <div class="subtitle">Comida de verdade feita com amor</div>
 
-  <img class="food" src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+  <div class="image"></div>
 
   <div class="badge">Feito com amor ❤️</div>
 
   <div class="card">
-    <b>Marmita do dia</b><br>
-    Frango grelhado com legumes<br>
+    Marmita do dia<br>
     <div class="price">R$ 24,90</div>
   </div>
 
   <div class="nav">
-    <span>🏠</span>
-    <span>🔍</span>
-    <span>🛒</span>
-    <span>❤️</span>
-    <span>👤</span>
+    🏠 🔍 🛒 ❤️ 👤
   </div>
 </div>
 
@@ -216,38 +251,34 @@ body {
   <div class="logo">Sabor de Casa</div>
 
   <div class="card green">
-    Comida caseira feita com carinho ❤️
+    Comida caseira feita com carinho
   </div>
 
   <div class="grid">
-    <div class="mini-card">
-      <img class="food" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+    <div class="mini">
+      <div class="image"></div>
       R$ 26,90
     </div>
 
-    <div class="mini-card">
-      <img class="food" src="https://images.unsplash.com/photo-1589308078054-832f7a7e1b86">
+    <div class="mini">
+      <div class="image"></div>
       R$ 28,90
     </div>
   </div>
 
   <div class="card green">
-    Monte sua marmita 🍲
+    Monte sua marmita
     <button class="btn">Montar agora</button>
   </div>
 
   <div class="nav">
-    <span>🏠</span>
-    <span>🔍</span>
-    <span>🛒</span>
-    <span>❤️</span>
-    <span>👤</span>
+    🏠 🔍 🛒 ❤️ 👤
   </div>
 </div>
 
 <!-- DETAILS -->
 <div class="phone">
-  <img class="food" src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+  <div class="image"></div>
 
   <div class="title">Frango Grelhado</div>
   <div class="subtitle">Com legumes frescos</div>
@@ -256,7 +287,7 @@ body {
 
   <button class="btn">Adicionar ao carrinho</button>
 
-  <div class="footer-info">
+  <div class="info">
     ✔ Feito hoje<br>
     🚚 Entrega rápida<br>
     ♻ Sustentável
@@ -268,8 +299,8 @@ body {
   <div class="title">Pedidos</div>
 
   <div class="card">
-    Em preparo 🍳<br><br>
-    Tempo: 20-30 min<br>
+    Em preparo<br>
+    Tempo: 20-30 min
     <button class="btn">Acompanhar</button>
   </div>
 </div>
@@ -278,28 +309,17 @@ body {
 <div class="phone">
   <div class="title">Favoritos</div>
 
-  <div class="card">
-    Frango Grelhado - R$ 24,90 ❤️
-  </div>
-
-  <div class="card">
-    Lasanha - R$ 28,90 ❤️
-  </div>
-
-  <div class="card">
-    Suco Natural - R$ 6,90 ❤️
+  <div class="list">
+    <div class="item">Frango <span>R$ 24,90</span></div>
+    <div class="item">Lasanha <span>R$ 28,90</span></div>
+    <div class="item">Suco <span>R$ 6,90</span></div>
   </div>
 </div>
 
 <!-- BRAND -->
 <div class="phone">
-  <div class="logo" style="font-size:28px;">
-    Sabor de Casa
-  </div>
-
-  <div class="subtitle">
-    comida caseira feita com amor
-  </div>
+  <div class="logo" style="font-size:26px;">Sabor de Casa</div>
+  <div class="subtitle">comida caseira feita com amor</div>
 
   <div class="card">
     🎨 Verde Oliva<br>
