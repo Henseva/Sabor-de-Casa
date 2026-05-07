@@ -3,145 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabor de Casa - Marmitas Artesanais</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <title>Sabor de Casa - WebApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        creme: '#F5F0E6',
-                        terracota: '#D2691E',
-                        oliva: '#556B2F',
-                        cafe: '#3C1E0A',
+                        creme: '#F2E8D9',
+                        terracota: '#B35D33',
+                        oliva: '#5D6335',
+                        cafe: '#3D2616',
+                        claro: '#A6A676',
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
                     }
                 }
             }
         }
     </script>
-
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #F5F0E6;
-            color: #3C1E0A;
-            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
-        }
+        body { font-family: 'Montserrat', sans-serif; background-color: #F2E8D9; color: #3D2616; overflow-x: hidden; }
         .font-serif { font-family: 'Playfair Display', serif; }
+        .artisan-bg { background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png"); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="antialiased">
+<body class="artisan-bg antialiased">
 
-    <div class="max-w-md mx-auto min-h-screen relative pb-32">
+    <div class="max-w-md mx-auto min-h-screen pb-32">
         
-        <header class="p-6 flex justify-between items-center sticky top-0 z-50 bg-[#F5F0E6]/90 backdrop-blur-md">
-            <div>
-                <p class="text-[10px] font-bold text-oliva/60 uppercase tracking-[0.2em]">Bom dia, Chef! 👋</p>
-                <h1 class="font-serif text-2xl font-bold text-cafe italic">Sabor de Casa</h1>
+        <header class="p-6 flex justify-between items-start pt-8">
+            <div class="space-y-1">
+                <p class="text-[10px] font-bold text-oliva/70 tracking-widest uppercase">Bom dia, Chef! 👋</p>
+                <h1 class="font-serif text-3xl font-bold text-cafe leading-none italic">Que bom ter você aqui!</h1>
+                <p class="text-[11px] text-cafe/60 font-medium italic">Comida de verdade feita com amor, como em casa.</p>
             </div>
-            <div class="flex gap-3">
-                <div class="p-2 bg-white rounded-full shadow-sm border border-oliva/5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#556B2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-                </div>
-                <div class="w-10 h-10 rounded-full border-2 border-terracota p-0.5 shadow-md">
-                    <img src="https://i.pravatar.cc/100?u=athena" class="rounded-full w-full h-full object-cover" alt="User">
+            <div class="flex gap-2">
+                <div class="bg-white p-2.5 rounded-full shadow-sm border border-black/5">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5D6335" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                 </div>
             </div>
         </header>
 
-        <main class="px-6 space-y-8">
+        <main class="px-5 space-y-8">
             
-            <section class="relative h-48 rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=600" 
-                     class="absolute inset-0 w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-cafe/90 to-transparent flex flex-col justify-center p-8">
-                    <span class="bg-terracota text-white text-[9px] font-bold px-3 py-1 rounded-full w-fit mb-3 tracking-widest">10% OFF NO PRIMEIRO PEDIDO</span>
-                    <h2 class="text-white font-serif text-2xl leading-tight italic">Comida caseira de verdade,<br> feita para você!</h2>
+            <section class="relative h-64 rounded-5xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-cafe/90 via-cafe/20 to-transparent p-8 flex flex-col justify-end">
+                    <span class="bg-terracota/90 backdrop-blur-sm text-white text-[9px] font-bold px-4 py-1.5 rounded-full w-fit mb-4 tracking-[0.15em]">10% OFF NO PRIMEIRO PEDIDO</span>
+                    <h2 class="text-white font-serif text-3xl leading-[1.1] italic mb-2">Comida caseira de verdade, feita para você!</h2>
                 </div>
             </section>
 
             <section>
-                <div class="flex justify-between items-center mb-5">
-                    <h3 class="text-lg font-serif font-bold text-cafe">Categorias</h3>
-                    <span class="text-oliva text-xs font-bold uppercase tracking-tighter cursor-pointer">Ver todas</span>
+                <div class="flex justify-between items-end mb-5 px-1">
+                    <h3 class="text-xl font-serif font-bold italic">Categorias</h3>
+                    <span class="text-oliva text-[10px] font-bold tracking-tighter border-b border-oliva">VER TODAS</span>
                 </div>
-                <div class="flex gap-5 overflow-x-auto no-scrollbar pb-2">
-                    <div class="flex flex-col items-center min-w-[70px] gap-2 text-center">
-                        <div class="w-16 h-16 bg-white rounded-[1.8rem] flex items-center justify-center text-2xl shadow-sm border border-oliva/10">🍲</div>
-                        <span class="text-[10px] font-bold text-cafe/70 uppercase">Marmitas</span>
+                <div class="flex justify-between overflow-x-auto no-scrollbar gap-4">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-16 h-16 bg-[#E8DFCF] rounded-3xl flex items-center justify-center text-2xl shadow-inner border border-black/5">🍲</div>
+                        <span class="text-[9px] font-bold tracking-widest text-cafe/80 uppercase">Marmitas</span>
                     </div>
-                    <div class="flex flex-col items-center min-w-[70px] gap-2 text-center">
-                        <div class="w-16 h-16 bg-white rounded-[1.8rem] flex items-center justify-center text-2xl shadow-sm border border-oliva/10">🍹</div>
-                        <span class="text-[10px] font-bold text-cafe/70 uppercase">Sucos</span>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-16 h-16 bg-[#E8DFCF] rounded-3xl flex items-center justify-center text-2xl shadow-inner border border-black/5">🍹</div>
+                        <span class="text-[9px] font-bold tracking-widest text-cafe/80 uppercase">Sucos</span>
                     </div>
-                    <div class="flex flex-col items-center min-w-[70px] gap-2 text-center">
-                        <div class="w-16 h-16 bg-white rounded-[1.8rem] flex items-center justify-center text-2xl shadow-sm border border-oliva/10">🥗</div>
-                        <span class="text-[10px] font-bold text-cafe/70 uppercase">Saudável</span>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-16 h-16 bg-[#E8DFCF] rounded-3xl flex items-center justify-center text-2xl shadow-inner border border-black/5">🥗</div>
+                        <span class="text-[9px] font-bold tracking-widest text-cafe/80 uppercase">Saudável</span>
                     </div>
-                    <div class="flex flex-col items-center min-w-[70px] gap-2 text-center">
-                        <div class="w-16 h-16 bg-white rounded-[1.8rem] flex items-center justify-center text-2xl shadow-sm border border-oliva/10">🍰</div>
-                        <span class="text-[10px] font-bold text-cafe/70 uppercase">Doces</span>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-16 h-16 bg-[#E8DFCF] rounded-3xl flex items-center justify-center text-2xl shadow-inner border border-black/5">🍰</div>
+                        <span class="text-[9px] font-bold tracking-widest text-cafe/80 uppercase">Doces</span>
                     </div>
                 </div>
             </section>
 
-            <section class="space-y-5">
-                <h3 class="text-lg font-serif font-bold text-cafe italic">Sugestões do Dia</h3>
+            <section class="space-y-6">
+                <h3 class="text-xl font-serif font-bold italic px-1">Sugestões do Dia</h3>
                 
-                <div class="bg-white rounded-[2.5rem] p-4 shadow-sm flex gap-4 items-center border border-oliva/5 relative group">
-                    <img src="https://images.unsplash.com/photo-1590666012393-0450134803e0?auto=format&fit=crop&q=80&w=400" 
-                         class="w-24 h-24 rounded-[1.8rem] object-cover shadow-md">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-1 text-terracota mb-1 text-[10px] font-bold">
-                            <span>★</span> 4.9 (120+)
-                        </div>
-                        <h4 class="font-bold text-cafe text-sm mb-1">Feijoada Completa</h4>
-                        <p class="text-[10px] text-cafe/50 leading-tight mb-2">Arroz, feijão preto e couve.</p>
-                        <p class="text-terracota font-bold text-base">R$ 28,90</p>
+                <div class="bg-white rounded-4xl p-4 shadow-sm border border-black/5 flex gap-4 items-center relative">
+                    <div class="w-24 h-24 rounded-3xl overflow-hidden shrink-0 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1590666012393-0450134803e0?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover">
                     </div>
-                    <button class="bg-terracota text-white p-3 rounded-2xl shadow-lg active:scale-95 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-1 text-terracota font-bold text-[9px]">
+                            <span class="text-xs">★</span> 4.9 (120+)
+                        </div>
+                        <h4 class="font-bold text-base leading-tight">Feijoada Completa</h4>
+                        <p class="text-[10px] text-cafe/50 font-medium leading-relaxed">Arroz, feijão preto, carnes nobres e couve.</p>
+                        <p class="text-terracota font-bold text-lg">R$ 28,90</p>
+                    </div>
+                    <button class="absolute -right-2 bottom-6 bg-terracota text-white w-12 h-12 rounded-2xl shadow-xl flex items-center justify-center active:scale-90 transition-transform">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                     </button>
-                    <div class="absolute top-0 right-8 bg-oliva text-white text-[8px] font-bold px-3 py-1 rounded-b-xl shadow-md uppercase tracking-widest">Popular</div>
+                    <div class="absolute top-0 right-10 bg-oliva text-white text-[8px] font-bold px-4 py-1.5 rounded-b-xl uppercase tracking-widest">Popular</div>
                 </div>
 
-                <div class="bg-white rounded-[2.5rem] p-4 shadow-sm flex gap-4 items-center border border-oliva/5 relative group">
-                    <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400" 
-                         class="w-24 h-24 rounded-[1.8rem] object-cover shadow-md">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-1 text-terracota mb-1 text-[10px] font-bold">
-                            <span>★</span> 4.8 (85+)
-                        </div>
-                        <h4 class="font-bold text-cafe text-sm mb-1">Frango com Quiabo</h4>
-                        <p class="text-[10px] text-cafe/50 leading-tight mb-2">Frango caipira e angu.</p>
-                        <p class="text-terracota font-bold text-base">R$ 26,50</p>
+                <div class="bg-white rounded-4xl p-4 shadow-sm border border-black/5 flex gap-4 items-center relative">
+                    <div class="w-24 h-24 rounded-3xl overflow-hidden shrink-0 shadow-md">
+                        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover">
                     </div>
-                    <button class="bg-terracota text-white p-3 rounded-2xl shadow-lg active:scale-95 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-1 text-terracota font-bold text-[9px]">
+                            <span class="text-xs">★</span> 4.8 (85+)
+                        </div>
+                        <h4 class="font-bold text-base leading-tight">Frango com Quiabo</h4>
+                        <p class="text-[10px] text-cafe/50 font-medium leading-relaxed">Frango caipira, quiabo fresquinho e angu.</p>
+                        <p class="text-terracota font-bold text-lg">R$ 26,50</p>
+                    </div>
+                    <button class="absolute -right-2 bottom-6 bg-terracota text-white w-12 h-12 rounded-2xl shadow-xl flex items-center justify-center active:scale-90 transition-transform">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                     </button>
                 </div>
 
             </section>
         </main>
 
-        <nav class="fixed bottom-6 left-6 right-6 bg-cafe text-creme rounded-[2.5rem] p-2.5 flex justify-between items-center shadow-2xl z-[100] border border-white/5">
-            <div class="bg-terracota p-3.5 rounded-full shadow-inner text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <nav class="fixed bottom-8 left-6 right-6 bg-cafe rounded-[2.5rem] p-2.5 flex justify-between items-center shadow-[0_20px_50px_rgba(61,38,22,0.4)] z-[100] border border-white/10">
+            <div class="bg-terracota p-4 rounded-full shadow-lg text-white">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            <div class="opacity-40">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <div class="px-2 opacity-30 text-creme">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
-            <div class="opacity-40 relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-                <div class="absolute -top-1 -right-1 w-2 h-2 bg-terracota rounded-full border border-cafe"></div>
+            <div class="px-2 opacity-30 text-creme">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
             </div>
-            <div class="opacity-40">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <div class="px-2 opacity-30 text-creme">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 shrink-0">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Profile" class="w-full h-full object-cover">
             </div>
         </nav>
     </div>
