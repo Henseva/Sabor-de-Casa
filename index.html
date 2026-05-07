@@ -1,246 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor de Casa - Marmitas Artesanais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<title>Sabor de Casa</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F5F0E6;
+            color: #3C1E0A;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Textura de papel artesanal sutil */
+        .artisan-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+        /* Esconder barra de rolagem mas manter funcionalidade */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .active-tab { color: #D2691E; }
+    </style>
 
-<style>
-
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box}
-
-/* TOKENS */
-:root{
-  --bg:#F5EFE0;
-  --green:#5A6B3C;
-  --green-dark:#3E4A2B;
-  --orange:#C35A1E;
-  --text:#2E2E2E;
-  --muted:#777;
-}
-
-/* BODY */
-body{
-  background: radial-gradient(circle at top,#1f2a18,#0b0f09);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  font-family:'Inter',sans-serif;
-}
-
-/* PHONE */
-.phone{
-  width:360px;
-  height:720px;
-  background:var(--bg);
-  border-radius:32px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 40px 80px rgba(0,0,0,.6);
-}
-
-/* SCREEN */
-.screen{
-  position:absolute;
-  inset:0;
-  padding:20px;
-  display:none;
-  animation:fade .3s;
-}
-
-.screen.active{
-  display:block;
-}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1}
-}
-
-/* HEADER */
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  font-family:'Playfair Display',serif;
-  font-size:22px;
-  color:var(--green-dark);
-}
-
-/* BANNER */
-.banner{
-  margin-top:20px;
-  padding:20px;
-  border-radius:24px;
-  color:#fff;
-  background:linear-gradient(135deg,#6c7f47,#3f4c2a);
-}
-
-/* GRID */
-.grid{
-  display:flex;
-  gap:12px;
-  margin-top:15px;
-}
-
-.card{
-  flex:1;
-  background:#fff;
-  padding:12px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-/* IMAGE */
-.image{
-  height:90px;
-  border-radius:16px;
-  background:linear-gradient(145deg,#d6d6d6,#bcbcbc);
-}
-
-/* BUTTON */
-.btn{
-  width:100%;
-  margin-top:15px;
-  padding:14px;
-  border:none;
-  border-radius:16px;
-  background:var(--orange);
-  color:#fff;
-  font-weight:600;
-}
-
-/* NAV */
-.nav{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  padding:12px;
-  background:#fff;
-  display:flex;
-  justify-content:space-around;
-}
-
-/* LIST */
-.item{
-  background:#fff;
-  padding:12px;
-  border-radius:14px;
-  margin-top:10px;
-}
-
-/* TITLE */
-.title{
-  margin-top:10px;
-  font-weight:600;
-}
-
-/* PRICE */
-.price{
-  margin-top:5px;
-  font-weight:600;
-}
-
-</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        creme: '#F5F0E6',
+                        terracota: '#D2691E',
+                        oliva: '#556B2F',
+                        cafe: '#3C1E0A',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
+<body class="artisan-texture">
+    <div id="root"></div>
 
-<body>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { Home, Search, ClipboardList, Heart, Bell, User, Plus, Star, ChevronRight } = lucide;
 
-<div class="phone">
+        const App = () => {
+            const categorias = [
+                { id: 1, nome: 'Marmitas', icone: '🍲' },
+                { id: 2, nome: 'Sucos', icone: '🍹' },
+                { id: 3, nome: 'Saudável', icone: '🥗' },
+                { id: 4, nome: 'Doces', icone: '🍰' },
+            ];
 
-<!-- HOME -->
-<div class="screen active" id="home">
+            const pratos = [
+                {
+                    id: 1,
+                    nome: 'Feijoada Completa',
+                    desc: 'Arroz, feijão preto, carnes nobres e couve.',
+                    preco: '28,90',
+                    rating: 4.9,
+                    tag: 'Popular',
+                    img: 'https://images.unsplash.com/photo-1590666012393-0450134803e0?auto=format&fit=crop&q=80&w=400'
+                },
+                {
+                    id: 2,
+                    nome: 'Frango com Quiabo',
+                    desc: 'Frango caipira, quiabo fresquinho e angu.',
+                    preco: '26,50',
+                    rating: 4.8,
+                    tag: 'Caseiro',
+                    img: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400'
+                },
+                {
+                    id: 3,
+                    nome: 'Lasanha à Bolonhesa',
+                    desc: 'Massa artesanal, molho de tomates frescos.',
+                    preco: '32,00',
+                    rating: 4.7,
+                    tag: 'Premium',
+                    img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=400'
+                }
+            ];
 
-  <div class="header">
-    ☰
-    <div class="logo">Sabor de Casa</div>
-    🔔
-  </div>
+            return (
+                <div className="max-w-md mx-auto min-h-screen relative pb-24">
+                    {/* HEADER */}
+                    <header className="p-6 flex justify-between items-center bg-creme/80 backdrop-blur-md sticky top-0 z-50">
+                        <div>
+                            <p className="text-xs font-bold text-oliva/60 uppercase tracking-widest">Bom dia, Chef! 👋</p>
+                            <h1 className="font-serif text-2xl font-bold text-cafe italic">Sabor de Casa</h1>
+                        </div>
+                        <div className="flex gap-3">
+                            <div className="p-2 bg-white rounded-full shadow-sm">
+                                <Bell size={20} className="text-oliva" />
+                            </div>
+                            <div className="p-2 bg-white rounded-full shadow-sm border-2 border-terracota">
+                                <User size={20} className="text-terracota" />
+                            </div>
+                        </div>
+                    </header>
 
-  <div class="banner">
-    Comida caseira feita com carinho
-  </div>
+                    <main className="px-6 space-y-8">
+                        {/* BANNER PROMOCIONAL */}
+                        <section className="relative h-48 rounded-[2.5rem] overflow-hidden shadow-xl group">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=600" 
+                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-cafe/80 to-transparent flex flex-col justify-center p-8">
+                                <span className="bg-terracota text-white text-[10px] font-bold px-3 py-1 rounded-full w-fit mb-2">10% OFF NO PRIMEIRO PEDIDO</span>
+                                <h2 className="text-white font-serif text-2xl leading-tight italic">Comida caseira de verdade,<br/> feita para você!</h2>
+                            </div>
+                        </section>
 
-  <div class="grid">
-    <div class="card" onclick="go('detalhe')">
-      <div class="image"></div>
-      <div class="price">R$ 26,90</div>
-    </div>
+                        {/* CATEGORIAS */}
+                        <section>
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-lg font-serif font-bold text-cafe">Categorias</h3>
+                                <div className="flex items-center text-oliva text-xs font-bold cursor-pointer">
+                                    Ver todas <ChevronRight size={14} />
+                                </div>
+                            </div>
+                            <div className="flex gap-5 overflow-x-auto no-scrollbar pb-2">
+                                {categorias.map(cat => (
+                                    <div key={cat.id} className="flex flex-col items-center min-w-[70px] gap-2">
+                                        <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center text-2xl shadow-sm border border-oliva/5 hover:border-terracota transition-all cursor-pointer">
+                                            {cat.icone}
+                                        </div>
+                                        <span className="text-[11px] font-bold text-cafe/70 uppercase tracking-tighter">{cat.nome}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
 
-    <div class="card" onclick="go('detalhe')">
-      <div class="image"></div>
-      <div class="price">R$ 28,90</div>
-    </div>
-  </div>
+                        {/* DESTAQUES */}
+                        <section className="space-y-4 pb-4">
+                            <h3 className="text-lg font-serif font-bold text-cafe italic">Sugestões do Dia</h3>
+                            <div className="grid grid-cols-1 gap-6">
+                                {pratos.map(prato => (
+                                    <div key={prato.id} className="bg-white rounded-[2.5rem] p-4 shadow-sm flex gap-4 items-center border border-oliva/5 relative overflow-hidden group">
+                                        <img src={prato.img} className="w-24 h-24 rounded-[1.8rem] object-cover" />
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-1 text-terracota mb-1">
+                                                <Star size={10} fill="currentColor" />
+                                                <span className="text-[10px] font-bold">{prato.rating} (120+)</span>
+                                            </div>
+                                            <h4 className="font-bold text-cafe text-sm mb-1">{prato.nome}</h4>
+                                            <p className="text-[10px] text-cafe/50 leading-tight mb-2 line-clamp-1">{prato.desc}</p>
+                                            <p className="text-terracota font-bold text-sm">R$ {prato.preco}</p>
+                                        </div>
+                                        <button className="bg-terracota text-white p-3 rounded-2xl shadow-lg active:scale-90 transition-transform">
+                                            <Plus size={20} />
+                                        </button>
+                                        {prato.tag && (
+                                            <div className="absolute top-0 right-8 bg-oliva text-white text-[8px] font-bold px-3 py-1 rounded-b-xl shadow-md">
+                                                {prato.tag.toUpperCase()}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </main>
 
-  <div class="banner">
-    Monte sua marmita
-    <button class="btn">Montar agora</button>
-  </div>
+                    {/* BARRA DE NAVEGAÇÃO FIXA */}
+                    <nav className="fixed bottom-6 left-6 right-6 bg-cafe text-creme rounded-[2.5rem] p-2 flex justify-between items-center shadow-2xl z-[100]">
+                        <div className="bg-terracota p-3 rounded-full shadow-inner">
+                            <Home size={22} strokeWidth={2.5} />
+                        </div>
+                        <Search size={22} className="opacity-40" />
+                        <div className="relative">
+                            <ClipboardList size={22} className="opacity-40" />
+                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-terracota rounded-full border-2 border-cafe"></div>
+                        </div>
+                        <Heart size={22} className="opacity-40" />
+                        <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-oliva/30">
+                            <img src="https://i.pravatar.cc/100?u=athena" alt="User" />
+                        </div>
+                    </nav>
+                </div>
+            );
+        };
 
-</div>
-
-<!-- DETALHE -->
-<div class="screen" id="detalhe">
-
-  <div class="title">Frango Grelhado</div>
-
-  <div class="image" style="height:160px;margin-top:10px;"></div>
-
-  <div class="price">R$ 24,90</div>
-
-  <button class="btn">Adicionar ao carrinho</button>
-
-</div>
-
-<!-- PEDIDOS -->
-<div class="screen" id="pedidos">
-
-  <div class="title">Pedidos</div>
-
-  <div class="item">
-    Em preparo<br>
-    20-30 min
-  </div>
-
-</div>
-
-<!-- FAVORITOS -->
-<div class="screen" id="favoritos">
-
-  <div class="title">Favoritos</div>
-
-  <div class="item">Frango - R$ 24,90</div>
-  <div class="item">Lasanha - R$ 28,90</div>
-
-</div>
-
-<!-- NAV -->
-<div class="nav">
-  <span onclick="go('home')">🏠</span>
-  <span onclick="go('home')">🔍</span>
-  <span onclick="go('pedidos')">🛒</span>
-  <span onclick="go('favoritos')">❤️</span>
-  <span>👤</span>
-</div>
-
-</div>
-
-<script>
-function go(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'))
-  document.getElementById(id).classList.add('active')
-}
-</script>
-
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
