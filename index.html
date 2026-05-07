@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabor de Casa - Marmitas Artesanais</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -16,19 +18,15 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #F5F0E6;
             color: #3C1E0A;
+            margin: 0;
+            padding: 0;
         }
         .font-serif { font-family: 'Playfair Display', serif; }
-        
-        /* Textura de papel artesanal sutil */
         .artisan-texture {
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
         }
-
-        /* Esconder barra de rolagem mas manter funcionalidade */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .active-tab { color: #D2691E; }
     </style>
 
     <script>
@@ -47,10 +45,13 @@
     </script>
 </head>
 <body class="artisan-texture">
-    <div id="root"></div>
+    <div id="root">
+        <div class="flex items-center justify-center min-h-screen">
+            <p class="font-serif italic text-cafe animate-pulse">Preparando sua cozinha...</p>
+        </div>
+    </div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
         const { Home, Search, ClipboardList, Heart, Bell, User, Plus, Star, ChevronRight } = lucide;
 
         const App = () => {
@@ -79,111 +80,69 @@
                     rating: 4.8,
                     tag: 'Caseiro',
                     img: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400'
-                },
-                {
-                    id: 3,
-                    nome: 'Lasanha à Bolonhesa',
-                    desc: 'Massa artesanal, molho de tomates frescos.',
-                    preco: '32,00',
-                    rating: 4.7,
-                    tag: 'Premium',
-                    img: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=400'
                 }
             ];
 
             return (
-                <div className="max-w-md mx-auto min-h-screen relative pb-24">
-                    {/* HEADER */}
+                <div className="max-w-md mx-auto min-h-screen relative pb-32">
                     <header className="p-6 flex justify-between items-center bg-creme/80 backdrop-blur-md sticky top-0 z-50">
                         <div>
-                            <p className="text-xs font-bold text-oliva/60 uppercase tracking-widest">Bom dia, Chef! 👋</p>
-                            <h1 className="font-serif text-2xl font-bold text-cafe italic">Sabor de Casa</h1>
+                            <p className="text-[10px] font-bold text-oliva/60 uppercase tracking-widest">Sabor de Casa</p>
+                            <h1 className="font-serif text-2xl font-bold text-cafe italic">Olá, Chef! 👋</h1>
                         </div>
-                        <div className="flex gap-3">
-                            <div className="p-2 bg-white rounded-full shadow-sm">
-                                <Bell size={20} className="text-oliva" />
-                            </div>
-                            <div className="p-2 bg-white rounded-full shadow-sm border-2 border-terracota">
-                                <User size={20} className="text-terracota" />
-                            </div>
+                        <div className="flex gap-2">
+                            <div className="p-2 bg-white rounded-full shadow-sm"><Bell size={20} className="text-oliva" /></div>
+                            <div className="p-2 bg-white rounded-full shadow-sm border border-terracota/20"><User size={20} className="text-terracota" /></div>
                         </div>
                     </header>
 
                     <main className="px-6 space-y-8">
-                        {/* BANNER PROMOCIONAL */}
-                        <section className="relative h-48 rounded-[2.5rem] overflow-hidden shadow-xl group">
-                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=600" 
-                                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-cafe/80 to-transparent flex flex-col justify-center p-8">
-                                <span className="bg-terracota text-white text-[10px] font-bold px-3 py-1 rounded-full w-fit mb-2">10% OFF NO PRIMEIRO PEDIDO</span>
-                                <h2 className="text-white font-serif text-2xl leading-tight italic">Comida caseira de verdade,<br/> feita para você!</h2>
+                        <section className="relative h-44 rounded-[2rem] overflow-hidden shadow-lg">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=600" className="absolute inset-0 w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/30 flex flex-col justify-center p-6">
+                                <h2 className="text-white font-serif text-xl italic leading-tight">Comida caseira feita<br/>com carinho!</h2>
                             </div>
                         </section>
 
-                        {/* CATEGORIAS */}
                         <section>
-                            <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-lg font-serif font-bold text-cafe">Categorias</h3>
-                                <div className="flex items-center text-oliva text-xs font-bold cursor-pointer">
-                                    Ver todas <ChevronRight size={14} />
-                                </div>
-                            </div>
-                            <div className="flex gap-5 overflow-x-auto no-scrollbar pb-2">
+                            <h3 className="text-lg font-serif font-bold text-cafe mb-4">Categorias</h3>
+                            <div className="flex gap-4 overflow-x-auto no-scrollbar">
                                 {categorias.map(cat => (
                                     <div key={cat.id} className="flex flex-col items-center min-w-[70px] gap-2">
-                                        <div className="w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center text-2xl shadow-sm border border-oliva/5 hover:border-terracota transition-all cursor-pointer">
+                                        <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-xl shadow-sm border border-oliva/5">
                                             {cat.icone}
                                         </div>
-                                        <span className="text-[11px] font-bold text-cafe/70 uppercase tracking-tighter">{cat.nome}</span>
+                                        <span className="text-[10px] font-bold text-cafe/60 uppercase">{cat.nome}</span>
                                     </div>
                                 ))}
                             </div>
                         </section>
 
-                        {/* DESTAQUES */}
-                        <section className="space-y-4 pb-4">
-                            <h3 className="text-lg font-serif font-bold text-cafe italic">Sugestões do Dia</h3>
-                            <div className="grid grid-cols-1 gap-6">
-                                {pratos.map(prato => (
-                                    <div key={prato.id} className="bg-white rounded-[2.5rem] p-4 shadow-sm flex gap-4 items-center border border-oliva/5 relative overflow-hidden group">
-                                        <img src={prato.img} className="w-24 h-24 rounded-[1.8rem] object-cover" />
-                                        <div className="flex-1">
-                                            <div className="flex items-center gap-1 text-terracota mb-1">
-                                                <Star size={10} fill="currentColor" />
-                                                <span className="text-[10px] font-bold">{prato.rating} (120+)</span>
-                                            </div>
-                                            <h4 className="font-bold text-cafe text-sm mb-1">{prato.nome}</h4>
-                                            <p className="text-[10px] text-cafe/50 leading-tight mb-2 line-clamp-1">{prato.desc}</p>
-                                            <p className="text-terracota font-bold text-sm">R$ {prato.preco}</p>
+                        <section className="space-y-4">
+                            <h3 className="text-lg font-serif font-bold text-cafe italic">Pratos do Dia</h3>
+                            {pratos.map(prato => (
+                                <div key={prato.id} className="bg-white rounded-[2rem] p-3 shadow-sm flex gap-4 items-center relative border border-oliva/5">
+                                    <img src={prato.img} className="w-20 h-20 rounded-2xl object-cover" />
+                                    <div className="flex-1">
+                                        <h4 className="font-bold text-cafe text-sm">{prato.nome}</h4>
+                                        <p className="text-terracota font-bold text-sm">R$ {prato.preco}</p>
+                                        <div className="flex items-center gap-1 text-terracota mt-1">
+                                            <Star size={10} fill="currentColor" />
+                                            <span className="text-[10px] font-bold">{prato.rating}</span>
                                         </div>
-                                        <button className="bg-terracota text-white p-3 rounded-2xl shadow-lg active:scale-90 transition-transform">
-                                            <Plus size={20} />
-                                        </button>
-                                        {prato.tag && (
-                                            <div className="absolute top-0 right-8 bg-oliva text-white text-[8px] font-bold px-3 py-1 rounded-b-xl shadow-md">
-                                                {prato.tag.toUpperCase()}
-                                            </div>
-                                        )}
                                     </div>
-                                ))}
-                            </div>
+                                    <button className="bg-terracota text-white p-2 rounded-xl mr-2"><Plus size={20} /></button>
+                                </div>
+                            ))}
                         </section>
                     </main>
 
-                    {/* BARRA DE NAVEGAÇÃO FIXA */}
-                    <nav className="fixed bottom-6 left-6 right-6 bg-cafe text-creme rounded-[2.5rem] p-2 flex justify-between items-center shadow-2xl z-[100]">
-                        <div className="bg-terracota p-3 rounded-full shadow-inner">
-                            <Home size={22} strokeWidth={2.5} />
-                        </div>
-                        <Search size={22} className="opacity-40" />
-                        <div className="relative">
-                            <ClipboardList size={22} className="opacity-40" />
-                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-terracota rounded-full border-2 border-cafe"></div>
-                        </div>
-                        <Heart size={22} className="opacity-40" />
-                        <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-oliva/30">
-                            <img src="https://i.pravatar.cc/100?u=athena" alt="User" />
-                        </div>
+                    <nav className="fixed bottom-6 left-6 right-6 bg-cafe text-creme rounded-full p-2 flex justify-between items-center shadow-2xl">
+                        <div className="bg-terracota p-3 rounded-full"><Home size={20} /></div>
+                        <Search size={20} className="opacity-40" />
+                        <ClipboardList size={20} className="opacity-40" />
+                        <Heart size={20} className="opacity-40" />
+                        <div className="w-8 h-8 rounded-full bg-oliva/30"></div>
                     </nav>
                 </div>
             );
