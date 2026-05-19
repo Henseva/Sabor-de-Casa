@@ -2,20 +2,27 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sabor de Casa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style type="text/tailwindcss">
         @layer utilities {
-            .font-cursive { font-family: 'Dancing Script', cursive; }
-            .cor-fundo { color: #FFF8E1; }
-            .bg-fundo { background-color: #FFF8E1; }
+            .font-cursive { font-family: 'Playfair Display', serif; font-style: italic; }
+            .bg-creme { background-color: #F3E9D2; }
+            .cor-creme { color: #F3E9D2; }
+            .bg-verde-oliva { background-color: #4A5A3E; }
+            .cor-verde-oliva { color: #4A5A3E; }
+            .bg-terracota { background-color: #B85C38; }
             .cor-terracota { color: #B85C38; }
-            .cor-marrom { color: #5D4037; }
-            .cor-verde { color: #4A6547; }
-            .borda-leve { border-color: #E8DCC2; }
+            .bg-marrom-cafe { background-color: #5C3A21; }
+            .cor-marrom-cafe { color: #5C3A21; }
+            .bg-verde-claro { background-color: #8A9A5B; }
+            .cor-verde-claro { color: #8A9A5B; }
+            .bg-papel { background-color: #F8EBD2; }
+            .borda-papel { border-color: #E8D2B0; }
+            .sombra-suave { box-shadow: 0 2px 8px rgba(92, 58, 33, 0.08); }
         }
     </style>
     <script>
@@ -23,116 +30,396 @@
             theme: {
                 extend: {
                     colors: {
-                        fundo: '#FFF8E1',
+                        creme: '#F3E9D2',
+                        'verde-oliva': '#4A5A3E',
                         terracota: '#B85C38',
-                        marrom: '#5D4037',
-                        verde: '#4A6547',
+                        'marrom-cafe': '#5C3A21',
+                        'verde-claro': '#8A9A5B',
+                        papel: '#F8EBD2',
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
+                        cursive: ['Playfair Display', 'serif'],
+                    },
+                    borderRadius: {
+                        'xl': '0.75rem',
+                        '2xl': '1rem',
                     }
                 }
             }
         }
     </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background-color: #F3E9D2; font-family: 'Poppins', sans-serif; color: #5C3A21; }
+        .container-app { max-width: 390px; margin: 0 auto; min-height: 100vh; position: relative; overflow: hidden; }
+    </style>
 </head>
-<body class="bg-fundo font-sans text-marrom min-h-screen">
-    <div class="max-w-md mx-auto min-h-screen relative">
-        <!-- Barra superior -->
-        <div class="px-6 py-3 flex justify-between items-center text-xs opacity-80">
+<body>
+    <div class="container-app bg-creme">
+
+        <!-- BARRA DE STATUS -->
+        <div class="px-5 py-2 flex justify-between items-center text-xs cor-marrom-cafe/80">
             <span>9:41</span>
-            <div class="flex gap-2">
+            <div class="flex gap-1.5">
                 <i class="fa-solid fa-signal"></i>
                 <i class="fa-solid fa-wifi"></i>
                 <i class="fa-solid fa-battery-full"></i>
             </div>
         </div>
 
-        <!-- Cabeçalho -->
-        <header class="px-6 py-4 flex justify-between items-center border-b borda-leve/60">
-            <button class="text-marrom text-xl">
+        <!-- CABEÇALHO PRINCIPAL -->
+        <header class="px-5 py-3 flex justify-between items-center border-b borda-papel/40">
+            <button class="cor-marrom-cafe text-lg">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <div class="text-center -ml-4">
-                <h1 class="font-cursive text-[clamp(1.9rem,5vw,2.3rem)] font-semibold cor-terracota leading-tight">Sabor de Casa</h1>
-                <p class="text-sm text-marrom/60 -mt-1">Comida de verdade</p>
+            <div class="text-center flex items-center gap-2">
+                <img src="https://cdn-icons-png.flaticon.com/512/2914/2914458.png" alt="Ícone panela" class="w-7 h-7">
+                <div>
+                    <h1 class="font-cursive text-[1.7rem] font-bold cor-terracota leading-tight">Sabor de Casa</h1>
+                    <p class="text-[0.65rem] cor-marrom-cafe/70 -mt-1">Comida de verdade</p>
+                </div>
             </div>
-            <button class="text-marrom text-xl">
+            <button class="cor-marrom-cafe text-lg">
                 <i class="fa-solid fa-bell"></i>
             </button>
         </header>
 
-        <!-- Conteúdo principal -->
-        <main class="px-6 pt-8 pb-20">
-            <!-- Texto de saudação - EXATAMENTE igual -->
-            <section class="mb-8 space-y-4">
-                <h2 class="text-lg font-normal">Bom dia, Chef! 👋</h2>
-                <p class="text-lg font-normal">Que bom ter você aqui!</p>
-                <p class="text-lg font-normal leading-relaxed">Comida de verdade ❤️ feita com amor,<br>como em casa.</p>
+        <!-- CONTEÚDO - TELA 1: INÍCIO -->
+        <main class="px-5 pb-20">
+            <!-- Saudação -->
+            <section class="mt-3 mb-5">
+                <h2 class="text-base font-medium">Bom dia, Chef! 👋</h2>
+                <p class="text-lg font-semibold mt-0.5">Que bom ter você aqui!</p>
+                <p class="text-sm mt-1 cor-marrom-cafe/80">Comida de verdade ❤️ feita com amor, como em casa.</p>
             </section>
 
-            <!-- Card "Feito com amor" -->
-            <section class="bg-[#FFF9E8] rounded-xl p-5 border borda-leve shadow-sm mb-10">
+            <!-- Card Destaque -->
+            <section class="bg-papel rounded-2xl p-4 border borda-papel sombra-suave mb-6">
                 <div class="flex justify-between items-start">
                     <div>
-                        <p class="font-cursive text-[clamp(1.4rem,4vw,1.7rem)] cor-terracota leading-tight">
-                            Feito com amor pra<br>você!
-                        </p>
-                        <i class="fa-solid fa-heart cor-terracota text-lg mt-2"></i>
+                        <p class="font-cursive text-[1.35rem] cor-terracota font-medium">Feito com amor pra você!</p>
+                        <i class="fa-solid fa-heart cor-terracota mt-1"></i>
                     </div>
-                    <img src="https://picsum.photos/id/10/140/110" alt="Prato" class="rounded-lg w-32 h-28 object-cover">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Prato principal" class="rounded-xl w-28 h-24 object-cover">
                 </div>
             </section>
 
             <!-- Categorias -->
-            <section>
-                <div class="flex justify-between items-center mb-7">
-                    <h3 class="text-xl font-medium">Categorias</h3>
-                    <a href="#" class="text-base cor-verde">Ver todas</a>
+            <section class="mb-6">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-base font-semibold">Categorias</h3>
+                    <a href="#" class="text-sm cor-verde-oliva">Ver todas</a>
                 </div>
-                <div class="grid grid-cols-4 text-center items-start">
-                    <div class="flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-utensils cor-verde text-2xl"></i>
-                        <span class="text-base">Pratos</span>
+                <div class="grid grid-cols-4 gap-3">
+                    <button class="flex flex-col items-center gap-1.5 bg-papel rounded-xl p-2.5 border borda-papel hover:bg-papel/70 transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1046/1046760.png" alt="Pratos" class="w-6 h-6 cor-verde-oliva">
+                        <span class="text-xs">Pratos</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-1.5 bg-papel rounded-xl p-2.5 border borda-papel hover:bg-papel/70 transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2667/2667003.png" alt="Marmitas" class="w-6 h-6 cor-verde-oliva">
+                        <span class="text-xs">Marmitas</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-1.5 bg-papel rounded-xl p-2.5 border borda-papel hover:bg-papel/70 transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1147/1147803.png" alt="Lanches" class="w-6 h-6 cor-verde-oliva">
+                        <span class="text-xs">Lanches</span>
+                    </button>
+                    <button class="flex flex-col items-center gap-1.5 bg-papel rounded-xl p-2.5 border borda-papel hover:bg-papel/70 transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2850/2850294.png" alt="Bebidas" class="w-6 h-6 cor-verde-oliva">
+                        <span class="text-xs">Bebidas</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Marmita do Dia -->
+            <section class="bg-papel rounded-2xl p-4 border borda-papel sombra-suave mb-8">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-base font-semibold">Marmita do dia</h3>
+                    <span class="bg-verde-oliva text-white text-[0.65rem] px-2 py-0.5 rounded-lg">Mais pedida</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-sm cor-marrom-cafe/80">Arroz, feijão, frango grelhado, legumes e salada</p>
+                        <p class="text-lg font-bold mt-1">R$ 24,90</p>
                     </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-basket-shopping cor-verde text-2xl"></i>
-                        <span class="text-base">Marmitas</span>
+                    <img src="https://images.unsplash.com/photo-1604909052743-94e838986d24?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80" alt="Marmita do dia" class="rounded-lg w-20 h-20 object-cover">
+                </div>
+            </section>
+
+
+            <!-- TELA 2: DESTAQUES -->
+            <section class="mb-7">
+                <div class="bg-verde-oliva text-white p-4 rounded-2xl relative mb-5">
+                    <p class="text-sm leading-snug">Comida caseira de verdade, feita todos os dias com ingredientes selecionados e muito carinho. ❤️</p>
+                    <div class="absolute top-2 right-2 bg-papel text-verde-oliva text-[0.7rem] px-2 py-1 rounded-md rotate-2 shadow-sm">
+                        Feito com amor ❤️
                     </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <span class="text-base">Lanches</span>
+                </div>
+
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-base font-semibold">Destaques da semana</h3>
+                    <a href="#" class="text-sm cor-verde-oliva">Ver todos</a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="bg-papel rounded-xl p-3 border borda-papel sombra-suave">
+                        <div class="relative mb-2">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=140&q=80" alt="Estrogonofe" class="rounded-lg w-full h-24 object-cover">
+                            <span class="absolute top-2 left-2 bg-terracota text-white text-[0.65rem] px-1.5 py-0.5 rounded">Popular</span>
+                        </div>
+                        <p class="text-sm font-medium">Estrogonofe de Frango</p>
+                        <div class="flex justify-between items-center mt-1.5">
+                            <span class="font-bold">R$ 26,90</span>
+                            <button class="bg-verde-oliva text-white w-7 h-7 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <i class="fa-solid fa-martini-glass cor-verde text-2xl"></i>
-                        <span class="text-base">Bebidas</span>
+
+                    <div class="bg-papel rounded-xl p-3 border borda-papel sombra-suave">
+                        <div class="relative mb-2">
+                            <img src="https://images.unsplash.com/photo-1574966742697-53253271f971?ixlib=rb-4.0.3&auto=format&fit=crop&w=140&q=80" alt="Lasanha" class="rounded-lg w-full h-24 object-cover">
+                            <span class="absolute top-2 left-2 bg-terracota text-white text-[0.65rem] px-1.5 py-0.5 rounded">Popular</span>
+                        </div>
+                        <p class="text-sm font-medium">Lasanha à Bolonhesa</p>
+                        <div class="flex justify-between items-center mt-1.5">
+                            <span class="font-bold">R$ 28,90</span>
+                            <button class="bg-verde-oliva text-white w-7 h-7 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Monte sua Marmita -->
+                <div class="bg-verde-oliva/10 rounded-2xl p-4 mb-5 border border-verde-oliva/20">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="font-semibold cor-verde-oliva mb-1">Monte sua marmita</h3>
+                            <p class="text-sm">Escolha os ingredientes que mais gosta!</p>
+                            <button class="bg-verde-oliva text-white text-sm px-3 py-1.5 rounded-lg mt-2">Montar agora</button>
+                        </div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3059/3059071.png" alt="Panela" class="w-12 h-12 cor-verde-oliva/70">
+                    </div>
+                </div>
+
+                <!-- Promoções -->
+                <div class="bg-terracota/10 rounded-2xl p-3 border border-terracota/20">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-base font-semibold">Promoções especiais</h3>
+                        <a href="#" class="text-sm cor-terracota">Ver todas</a>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-terracota text-white font-bold text-lg px-3 py-2 rounded-lg">10% OFF</div>
+                        <div>
+                            <p class="font-medium">Marmitas com desconto</p>
+                            <p class="text-xs cor-marrom-cafe/70">Aproveite!</p>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1598103944647-41c6c7b0463a?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80" alt="Marmita promoção" class="rounded w-16 h-12 object-cover">
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- TELA 3: DETALHES DO PRATO -->
+            <section class="bg-papel rounded-2xl p-4 border borda-papel sombra-suave mb-8">
+                <div class="flex justify-between items-center mb-3">
+                    <button class="cor-marrom-cafe">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <h3 class="font-semibold">Detalhes do prato</h3>
+                    <button class="cor-marrom-cafe">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                </div>
+
+                <img src="https://images.unsplash.com/photo-1546833999-b9f5
+                                        581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=340&q=80" 
+                    alt="Frango Grelhado com Legumes" 
+                    class="rounded-xl w-full h-44 object-cover mb-4">
+
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h2 class="text-lg font-bold">Frango Grelhado com Legumes</h2>
+                        <p class="text-sm cor-marrom-cafe/80 mt-1">Arroz, feijão, frango grelhado, legumes salteados e salada verde.</p>
+                        
+                        <div class="flex items-center gap-1.5 mt-2 mb-3">
+                            <div class="flex text-yellow-500 text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="text-xs cor-marrom-cafe/70">4,8 (328 avaliações)</span>
+                        </div>
+
+                        <p class="text-xl font-bold">R$ 24,90</p>
+                    </div>
+                    <span class="bg-papel/60 text-[0.65rem] px-2 py-1 rounded-md border borda-papel/70 text-center">
+                        Feito com ingredientes frescos 🌿
+                    </span>
+                </div>
+
+                <!-- Quantidade -->
+                <div class="mt-4 mb-4">
+                    <label class="text-sm font-medium block mb-2">Quantidade</label>
+                    <div class="flex items-center gap-2">
+                        <button class="w-8 h-8 rounded-lg bg-papel border borda-papel flex items-center justify-center hover:bg-papel/60 transition">-</button>
+                        <span class="text-sm font-medium">1</span>
+                        <button class="w-8 h-8 rounded-lg bg-papel border borda-papel flex items-center justify-center hover:bg-papel/60 transition">+</button>
+                    </div>
+                </div>
+
+                <!-- Botão Adicionar -->
+                <button class="w-full bg-terracota text-white py-3 rounded-xl font-medium hover:bg-terracota/90 transition mb-4">
+                    Adicionar ao carrinho
+                </button>
+
+                <!-- Diferenciais -->
+                <div class="space-y-2 text-sm">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-heart cor-terracota"></i>
+                        <span>Feito hoje com muito amor</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-truck cor-verde-oliva"></i>
+                        <span>Entrega rápida e segura</span>
+                    </div>
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-leaf cor-verde-claro"></i>
+                        <span>Embalagem sustentável</span>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- TELA 4: MEUS PEDIDOS -->
+            <section class="bg-papel rounded-2xl p-4 border borda-papel sombra-suave mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-base font-bold">Meus pedidos</h2>
+                </div>
+
+                <!-- Abas -->
+                <div class="flex gap-2 mb-4">
+                    <button class="bg-verde-oliva text-white text-xs px-3 py-1.5 rounded-lg font-medium">Ativos</button>
+                    <button class="bg-papel text-marrom-cafe/70 text-xs px-3 py-1.5 rounded-lg border borda-papel">Histórico</button>
+                    <button class="bg-papel text-marrom-cafe/70 text-xs px-3 py-1.5 rounded-lg border borda-papel">Agendados</button>
+                </div>
+
+                <!-- Pedido em preparo -->
+                <div class="bg-papel/60 rounded-xl p-3 border borda-papel/60 mb-4">
+                    <p class="text-sm font-medium mb-1">Em preparo</p>
+                    <p class="text-xs cor-marrom-cafe/70 mb-2">Seu pedido está sendo preparado com muito amor!</p>
+                    <p class="text-xs cor-verde-oliva font-medium mb-3">Previsão de entrega: 20 - 30 min</p>
+                    
+                    <button class="bg-verde-oliva/20 cor-verde-oliva text-xs px-3 py-1.5 rounded-lg w-full font-medium mb-3">
+                        Acompanhar pedido
+                    </button>
+
+                    <div class="flex justify-between items-center text-[0.65rem] cor-marrom-cafe/70">
+                        <span>#1254 • Hoje às 12:30</span>
+                        <a href="#" class="cor-verde-oliva">Ver detalhes</a>
+                    </div>
+                </div>
+
+                <!-- Ajuda -->
+                <div class="mt-5">
+                    <p class="text-sm font-medium mb-2">Precisa de ajuda?</p>
+                    <button class="flex items-center gap-2 bg-green-50 text-green-700 text-sm px-3 py-2 rounded-lg w-full justify-center">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Fale com a gente pelo WhatsApp
+                    </button>
+                </div>
+            </section>
+
+
+            <!-- TELA 5: FAVORITOS -->
+            <section class="bg-papel rounded-2xl p-4 border borda-papel sombra-suave mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-base font-bold">Favoritos</h2>
+                    <a href="#" class="text-sm cor-verde-oliva">Editar</a>
+                </div>
+
+                <!-- Lista de Favoritos -->
+                <div class="space-y-3 mb-5">
+                    <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-papel/60 transition">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80" alt="Frango Grelhado" class="rounded-lg w-14 h-14 object-cover">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium">Frango Grelhado com Legumes</p>
+                            <p class="text-xs cor-marrom-cafe/70">R$ 24,90</p>
+                        </div>
+                        <button class="cor-terracota">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-papel/60 transition">
+                        <img src="https://images.unsplash.com/photo-1574966742697-53253271f971?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80" alt="Lasanha" class="rounded-lg w-14 h-14 object-cover">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium">Lasanha à Bolonhesa</p>
+                            <p class="text-xs cor-marrom-cafe/70">R$ 28,90</p>
+                        </div>
+                        <button class="cor-marrom-cafe/40">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-papel/60 transition">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80" alt="Estrogonofe" class="rounded-lg w-14 h-14 object-cover">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium">Estrogonofe de Frango</p>
+                            <p class="text-xs cor-marrom-cafe/70">R$ 26,90</p>
+                        </div>
+                        <button class="cor-marrom-cafe/40">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-papel/60 transition">
+                        <img src="https://images.unsplash.com/photo-1613479490565-cd139c9d9c2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&q=80" alt="Suco Natural" class="rounded-lg w-14 h-14 object-cover">
+                        <div class="flex-1">
+                            <p class="text-sm font-medium">Suco Natural Laranja - 300ml</p>
+                            <p class="text-xs cor-marrom-cafe/70">R$ 6,90</p>
+                        </div>
+                        <button class="cor-marrom-cafe/40">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Frase final -->
+                <div class="bg-verde-oliva/10 rounded-xl p-3 text-center border border-verde-oliva/20">
+                    <p class="font-cursive text-base cor-verde-oliva font-medium">Lugar de comida boa é no coração da gente! ❤️</p>
                 </div>
             </section>
         </main>
 
-        <!-- Navegação inferior - IDÊNTICA -->
-        <nav class="fixed bottom-0 left-0 right-0 bg-fundo border-t borda-leve/60 px-8 py-4 flex justify-between items-center">
-            <button class="flex flex-col items-center gap-1 cor-verde">
+
+        <!-- NAVEGAÇÃO INFERIOR - IDÊNTICA -->
+        <nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-[390px] bg-creme border-t borda-papel/40 px-6 py-2.5 flex justify-between items-center shadow-[0_-2px_8px_rgba(92,58,33,0.05)]">
+            <button class="flex flex-col items-center gap-1 cor-verde-oliva">
                 <i class="fa-solid fa-house text-lg"></i>
-                <span class="text-xs">Início</span>
+                <span class="text-[0.65rem] font-medium">Início</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom/70">
+            <button class="flex flex-col items-center gap-1 cor-marrom-cafe/60 hover:cor-verde-oliva transition">
                 <i class="fa-solid fa-magnifying-glass text-lg"></i>
-                <span class="text-xs">Buscar</span>
+                <span class="text-[0.65rem]">Buscar</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom/70">
+            <button class="flex flex-col items-center gap-1 cor-marrom-cafe/60 hover:cor-verde-oliva transition">
                 <i class="fa-solid fa-basket-shopping text-lg"></i>
-                <span class="text-xs">Pedidos</span>
+                <span class="text-[0.65rem]">Pedidos</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom/70">
+            <button class="flex flex-col items-center gap-1 cor-marrom-cafe/60 hover:cor-verde-oliva transition">
                 <i class="fa-solid fa-heart text-lg"></i>
-                <span class="text-xs">Favoritos</span>
+                <span class="text-[0.65rem]">Favoritos</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom/70">
+            <button class="flex flex-col items-center gap-1 cor-marrom-cafe/60 hover:cor-verde-oliva transition">
                 <i class="fa-solid fa-user text-lg"></i>
-                <span class="text-xs">Conta</span>
+                <span class="text-[0.65rem]">Conta</span>
             </button>
         </nav>
+
     </div>
 </body>
 </html>
