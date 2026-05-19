@@ -5,39 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabor de Casa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #FAF3E0;
-            color: #5C3A21;
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .font-cursive { font-family: 'Dancing Script', cursive; }
+            .cor-fundo { color: #FFF8E1; }
+            .bg-fundo { background-color: #FFF8E1; }
+            .cor-terracota { color: #B85C38; }
+            .cor-marrom { color: #5D4037; }
+            .cor-verde { color: #4A6547; }
+            .borda-leve { border-color: #E8DCC2; }
         }
-        .font-cursive {
-            font-family: 'Dancing Script', cursive;
-        }
-        .cor-terracota { color: #B85C38; }
-        .bg-terracota { background-color: #B85C38; }
-        .cor-verde-oliva { color: #4A5A3E; }
-        .bg-verde-oliva { background-color: #4A5A3E; }
-        .borda-suave { border-color: #E8D9C0; }
-        .bg-papel { background-color: #FAF3E0; }
-        .bg-papel-claro { background-color: #FFF9EA; }
     </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        papel: '#FAF3E0',
-                        'papel-claro': '#FFF9EA',
+                        fundo: '#FFF8E1',
                         terracota: '#B85C38',
-                        'verde-oliva': '#4A5A3E',
-                        'marrom-cafe': '#5C3A21',
+                        marrom: '#5D4037',
+                        verde: '#4A6547',
                     },
                     fontFamily: {
-                        cursive: ['Dancing Script', 'cursive'],
                         sans: ['Poppins', 'sans-serif'],
                     }
                 }
@@ -45,120 +36,103 @@
         }
     </script>
 </head>
-<body class="bg-papel font-sans text-marrom-cafe min-h-screen">
-    <!-- Container Principal - igual ao celular -->
-    <div class="max-w-md mx-auto bg-papel min-h-screen relative shadow-2xl">
-        
-        <!-- Barra superior (horário e ícones) -->
-        <div class="px-5 py-3 flex justify-between items-center text-xs text-marrom-cafe/80">
+<body class="bg-fundo font-sans text-marrom min-h-screen">
+    <div class="max-w-md mx-auto min-h-screen relative">
+        <!-- Barra superior -->
+        <div class="px-6 py-3 flex justify-between items-center text-xs opacity-80">
             <span>9:41</span>
             <div class="flex gap-2">
-                <i class="fa fa-signal"></i>
-                <i class="fa fa-wifi"></i>
-                <i class="fa fa-battery-full"></i>
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full"></i>
             </div>
         </div>
 
         <!-- Cabeçalho -->
-        <header class="px-5 py-4 flex justify-between items-center border-b borda-suave/50">
-            <button class="text-marrom-cafe text-xl">
-                <i class="fa fa-bars"></i>
+        <header class="px-6 py-4 flex justify-between items-center border-b borda-leve/60">
+            <button class="text-marrom text-xl">
+                <i class="fa-solid fa-bars"></i>
             </button>
-            <div class="text-center">
-                <h1 class="font-cursive text-[clamp(1.8rem,5vw,2.2rem)] font-bold cor-terracota">Sabor de Casa</h1>
-                <p class="text-sm text-marrom-cafe/70 -mt-1">Comida de verdade</p>
+            <div class="text-center -ml-4">
+                <h1 class="font-cursive text-[clamp(1.9rem,5vw,2.3rem)] font-semibold cor-terracota leading-tight">Sabor de Casa</h1>
+                <p class="text-sm text-marrom/60 -mt-1">Comida de verdade</p>
             </div>
-            <button class="text-marrom-cafe text-xl">
-                <i class="fa fa-bell-o"></i>
+            <button class="text-marrom text-xl">
+                <i class="fa-solid fa-bell"></i>
             </button>
         </header>
 
-        <!-- Conteúdo -->
-        <main class="px-5 py-6 pb-24">
-            <!-- Saudação -->
-            <section class="mb-8 space-y-2">
-                <h2 class="text-lg font-medium">Bom dia, Chef! 👋</h2>
-                <p class="text-base">Que bom ter você aqui!</p>
-                <p class="text-base">Comida de verdade ❤️ feita com amor, como em casa.</p>
+        <!-- Conteúdo principal -->
+        <main class="px-6 pt-8 pb-20">
+            <!-- Texto de saudação - EXATAMENTE igual -->
+            <section class="mb-8 space-y-4">
+                <h2 class="text-lg font-normal">Bom dia, Chef! 👋</h2>
+                <p class="text-lg font-normal">Que bom ter você aqui!</p>
+                <p class="text-lg font-normal leading-relaxed">Comida de verdade ❤️ feita com amor,<br>como em casa.</p>
             </section>
 
             <!-- Card "Feito com amor" -->
-            <section class="bg-papel-claro rounded-xl p-5 border borda-suave shadow-sm mb-8">
+            <section class="bg-[#FFF9E8] rounded-xl p-5 border borda-leve shadow-sm mb-10">
                 <div class="flex justify-between items-start">
                     <div>
-                        <p class="font-cursive text-xl cor-terracota">Feito com amor pra você!</p>
-                        <i class="fa fa-heart cor-terracota mt-2"></i>
+                        <p class="font-cursive text-[clamp(1.4rem,4vw,1.7rem)] cor-terracota leading-tight">
+                            Feito com amor pra<br>você!
+                        </p>
+                        <i class="fa-solid fa-heart cor-terracota text-lg mt-2"></i>
                     </div>
-                    <img src="https://picsum.photos/id/10/140/100" alt="Prato" class="rounded-lg w-32 h-24 object-cover">
+                    <img src="https://picsum.photos/id/10/140/110" alt="Prato" class="rounded-lg w-32 h-28 object-cover">
                 </div>
             </section>
 
             <!-- Categorias -->
-            <section class="mb-10">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-lg font-medium">Categorias</h3>
-                    <a href="#" class="text-sm cor-verde-oliva">Ver todas</a>
+            <section>
+                <div class="flex justify-between items-center mb-7">
+                    <h3 class="text-xl font-medium">Categorias</h3>
+                    <a href="#" class="text-base cor-verde">Ver todas</a>
                 </div>
-                <div class="grid grid-cols-4 gap-4 text-center">
+                <div class="grid grid-cols-4 text-center items-start">
                     <div class="flex flex-col items-center gap-2">
-                        <i class="fa fa-cutlery cor-verde-oliva text-2xl"></i>
-                        <span class="text-sm">Pratos</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-2">
-                        <i class="fa fa-shopping-basket cor-verde-oliva text-2xl"></i>
-                        <span class="text-sm">Marmitas</span>
+                        <i class="fa-solid fa-utensils cor-verde text-2xl"></i>
+                        <span class="text-base">Pratos</span>
                     </div>
                     <div class="flex flex-col items-center gap-2">
-                        <span class="text-xl font-light">Lanches</span>
+                        <i class="fa-solid fa-basket-shopping cor-verde text-2xl"></i>
+                        <span class="text-base">Marmitas</span>
                     </div>
                     <div class="flex flex-col items-center gap-2">
-                        <i class="fa fa-glass cor-verde-oliva text-2xl"></i>
-                        <span class="text-sm">Bebidas</span>
+                        <span class="text-base">Lanches</span>
                     </div>
-                </div>
-            </section>
-
-            <!-- Marmita do Dia -->
-            <section class="bg-papel-claro rounded-xl p-5 border borda-suave shadow-sm">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-lg font-medium">Marmita do dia</h3>
-                    <span class="bg-verde-oliva text-white text-xs px-3 py-1 rounded-full">Mais pedida</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <div class="flex-1">
-                        <p class="text-base leading-relaxed">Arroz, feijão, frango grelhado, legumes e salada</p>
-                        <p class="text-xl font-bold mt-2">R$ 24,90</p>
+                    <div class="flex flex-col items-center gap-2">
+                        <i class="fa-solid fa-martini-glass cor-verde text-2xl"></i>
+                        <span class="text-base">Bebidas</span>
                     </div>
-                    <img src="https://picsum.photos/id/10/120/100" alt="Marmita do dia" class="rounded-lg w-28 h-24 object-cover">
                 </div>
             </section>
-
         </main>
 
-        <!-- Navegação Inferior -->
-        <nav class="fixed bottom-0 left-0 right-0 bg-papel border-t borda-suave px-8 py-3 flex justify-between items-center shadow-lg">
-            <button class="flex flex-col items-center gap-1 cor-verde-oliva">
-                <i class="fa fa-home text-lg"></i>
+        <!-- Navegação inferior - IDÊNTICA -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-fundo border-t borda-leve/60 px-8 py-4 flex justify-between items-center">
+            <button class="flex flex-col items-center gap-1 cor-verde">
+                <i class="fa-solid fa-house text-lg"></i>
                 <span class="text-xs">Início</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom-cafe/70">
-                <i class="fa fa-search text-lg"></i>
+            <button class="flex flex-col items-center gap-1 text-marrom/70">
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
                 <span class="text-xs">Buscar</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom-cafe/70">
-                <i class="fa fa-shopping-basket text-lg"></i>
+            <button class="flex flex-col items-center gap-1 text-marrom/70">
+                <i class="fa-solid fa-basket-shopping text-lg"></i>
                 <span class="text-xs">Pedidos</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom-cafe/70">
-                <i class="fa fa-heart-o text-lg"></i>
+            <button class="flex flex-col items-center gap-1 text-marrom/70">
+                <i class="fa-solid fa-heart text-lg"></i>
                 <span class="text-xs">Favoritos</span>
             </button>
-            <button class="flex flex-col items-center gap-1 text-marrom-cafe/70">
-                <i class="fa fa-user-o text-lg"></i>
+            <button class="flex flex-col items-center gap-1 text-marrom/70">
+                <i class="fa-solid fa-user text-lg"></i>
                 <span class="text-xs">Conta</span>
             </button>
         </nav>
-
     </div>
 </body>
 </html>
